@@ -1,0 +1,11 @@
+{
+  "startUrl": "https://store.steampowered.com/",
+  "browser": "chrome",
+  "language": "en",
+  "downloadDir": "\\src\\test\\resources\\downloads",
+  "implicitlyWait": 3,
+  "pollingTime": 100,
+  "downloadTimeout": 5,
+  "fileName": "SteamSetup.exe",
+  "fileSize": 1573568
+}
