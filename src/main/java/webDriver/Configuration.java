@@ -1,4 +1,4 @@
-package global.genre;
+package webDriver;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,24 +6,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-@SuppressWarnings("ALL")
-public abstract class Genre {
+public class Configuration {
 
-    private final String configPath = "src/test/resources/lang/action.json";
+    private static final String configPath = "src/test/resources/config.json";
 
-    public void goToGenre(){
-
-    }
-
-    public String getActionName(String key){
+    public static String getConfigValue(String key) {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root = null;
         try {
             root = mapper.readTree(new File(configPath));
+            return root.path(key).asText();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return root.path(key).asText();
     }
-
 }

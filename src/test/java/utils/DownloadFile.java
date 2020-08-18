@@ -1,33 +1,27 @@
 package utils;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class DownloadFile{
+import static webDriver.Configuration.getConfigValue;
+import static webDriver.DriverInit.*;
 
-    private String filePath;
-    private int pollingTime;
-    private int downloadTimeout;
-    private int fileSize;
+@SuppressWarnings("ALL")
+public class DownloadFile {
 
-    public DownloadFile(){
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            JsonNode root = mapper.readTree(new File("src\\test\\resources\\config.json"));
-            String fileName = root.path("fileName").asText();
-            String downloadDir = root.path("downloadDir").asText();
-            pollingTime = root.path("pollingTime").asInt();
-            downloadTimeout = root.path("downloadTimeout").asInt();
-            fileSize = root.path("fileSize").asInt();
-            filePath = System.getProperty("user.dir").concat(downloadDir).concat(File.separator).concat(fileName);
+    private final String filePath;
+    private final int pollingTime;
+    private final int timeout;
+    private final int fileSize;
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public DownloadFile() {
+        String fileName = getConfigValue("fileName");
+        getInstance();
+        pollingTime = Integer.parseInt(getConfigValue("pollingTime"));
+        timeout = Integer.parseInt(getConfigValue("timeout"));
+        fileSize = Integer.parseInt(getConfigValue("fileSize"));
+        filePath = getBrowser().getBrowserDownloadDirectory().concat(File.separator).concat(fileName);
+        System.out.println("1 - " + filePath);
     }
 
 
@@ -42,7 +36,7 @@ public class DownloadFile{
         int result = 0;
         File file = new File(filePath);
 
-        for (int i = 1; i <= downloadTimeout*10; i++) {
+        for (int i = 1; i <= timeout * 10; i++) {
             try {
                 TimeUnit.MILLISECONDS.sleep(pollingTime);
             } catch (InterruptedException ignored) {
@@ -53,7 +47,7 @@ public class DownloadFile{
         return result;
     }
 
-    public boolean isFileDownloaded(){
-        return fileSize==getDownloadedFileSize();
+    public boolean isFileDownloaded() {
+        return fileSize == getDownloadedFileSize();
     }
 }

@@ -1,11 +1,11 @@
 package model;
 
+@SuppressWarnings("ALL")
 public class Game {
-    private String name;
-    private double discount;
-    private double price;
-    private String link;
-
+    private final String name;
+    private final double discount;
+    private final double price;
+    private final String link;
 
     public Game(String name, double discount, double price, String link) {
         this.name = name;

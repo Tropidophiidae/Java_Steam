@@ -1,6 +1,6 @@
 # How to start
-Use src/test/resources/suite.xml to start all cases (right click on the suite.xml -> Run).  
-Also it's possible to start each test separately (right click on the case -> Run).
+Use *src/test/resources/suite.xml* to start all cases.  
+Also, it's possible to start each test separately.
 # DownloadInstallSteam test
 * **Step 1** Open *Steam* website.
 * **Step 2** Go to *Install Steam* page.
@@ -17,22 +17,26 @@ Also it's possible to start each test separately (right click on the case -> Run
   * **Step 6.1** Fill *Age Check* fields if it appear.
 * **Step 7** Check *Name*, *Price* and *Discount* from the game page the same as in *Step 5*.
 ***
-# Config.json
-## startURL
+# JSON configs
+## config.json
+### startURL
 Start page for the tests. Used in *BaseTest*->*@BeforeMethod*.
-## browser
+### browser
 *Chrome* or *Firefox*.
-## language
-*en* or *ru*.
-## downloadDir
-Download directory for the browser.
-## impicityWait
-Default value for the *Implicity Wait* parameter.
-## pollingTime
+### timeout
+Default value for the *Implicitly Wait* parameter.
+### pollingTime
 Period in *milliseconds*.The system checks every *%pollingTime%* for the downloaded file.
-## downloadTimeout
-Time in *seconds*. If file is not downloaded in *%downloadTimeout%* the case will Failed.
-## fileName
+### downloadTimeout
+Time in *seconds*. If file is not downloaded in *%downloadTimeout%* the case will Fail.
+### fileName
 Name of the downloaded file.
-## fileSize
+### fileSize
 Size of the downloaded file in *bytes*.
+***
+## browser.json
+Configs for *Chrome* and *Firefox* browsers.
+***
+# Logs
+Location -> */logs/*.  
+XML config -> *src/main/resources/log4j2.xml*.
