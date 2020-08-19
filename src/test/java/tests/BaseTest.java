@@ -7,9 +7,12 @@ import static webDriver.DriverInit.*;
 
 public class BaseTest {
 
+    public void goToStartPage(){
+        getDriver().get(getConfigValue("startUrl"));
+    }
+
     @BeforeMethod
     public void setupTest() {
-        getDriver().get(getConfigValue("startUrl"));
         getDriver().manage().window().maximize();
     }
 

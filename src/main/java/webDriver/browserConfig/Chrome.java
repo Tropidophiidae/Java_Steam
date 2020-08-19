@@ -9,7 +9,6 @@ import java.util.Map;
 
 import static logger.log4j2.log;
 
-@SuppressWarnings("ALL")
 public class Chrome extends Browser{
     private final String browserName = "chrome";
     private final String downloadDirectoryKey = "download.default_directory";

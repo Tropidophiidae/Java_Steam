@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-@SuppressWarnings("ALL")
 public abstract class Genre {
 
     private final String configPath = "src/test/resources/lang/action.json";

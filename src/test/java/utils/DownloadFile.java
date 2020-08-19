@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 import static webDriver.Configuration.getConfigValue;
 import static webDriver.DriverInit.*;
 
-@SuppressWarnings("ALL")
 public class DownloadFile {
 
     private final String filePath;
@@ -21,7 +20,6 @@ public class DownloadFile {
         timeout = Integer.parseInt(getConfigValue("timeout"));
         fileSize = Integer.parseInt(getConfigValue("fileSize"));
         filePath = getBrowser().getBrowserDownloadDirectory().concat(File.separator).concat(fileName);
-        System.out.println("1 - " + filePath);
     }
 
 
